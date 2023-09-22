@@ -8,7 +8,12 @@ import Payment, { IPayment } from './models/Payment';
 
 const app = express();
 const server = http.createServer(app); // Criando um servidor HTTP para o Express
-const io = new SocketIoServer(server); // Configurando o Socket.io com o servidor HTTP
+const io = new SocketIoServer(server, {
+    cors: {
+        origin: "*",
+        methods: ["*"]
+    }
+});
 
 // Ativando o CORS para todas as rotas
 app.use(cors());
